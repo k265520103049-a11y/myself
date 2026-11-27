@@ -1,10 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="vi" data-theme="liquid-light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hoàng Hải Nam | Bio & Portfolio</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%230ea5e9'/%3E%3Cstop offset='100%25' stop-color='%234f46e5'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='18' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='800' font-size='28'%3EHN%3C/text%3E%3C/svg%3E">
     <!-- Tải Tailwind CSS qua CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Tải Font Inter & Plus Jakarta Sans từ Google Fonts -->
@@ -200,6 +200,13 @@
             animation-delay: -2s;
         }
 
+        @media (min-width: 1024px) {
+            .blob-1 { width: 760px; height: 760px; left: -6%; }
+            .blob-2 { width: 820px; height: 820px; right: -8%; }
+            .blob-3 { width: 700px; height: 700px; left: 12%; }
+            .blob-4 { width: 580px; height: 580px; }
+        }
+
         @keyframes floatLiquid {
             0% {
                 transform: translate3d(0, 0, 0) scale(1);
@@ -271,180 +278,6 @@
             }
         }
 
-        /* Hiệu ứng ánh sáng lướt qua thẻ dự án nổi bật */
-        .specular-sheen {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .specular-sheen::after {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -75%;
-            width: 50%;
-            height: 200%;
-            background: linear-gradient(
-                to right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0.25) 50%,
-                rgba(255, 255, 255, 0) 100%
-            );
-            transform: rotate(25deg);
-            transition: left 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            pointer-events: none;
-        }
-
-        .specular-sheen:hover::after {
-            left: 135%;
-        }
-
-        /* Tùy chỉnh thanh cuộn */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(148, 163, 184, 0.35);
-            border-radius: 999px;
-        }
-    </style>
-</head>
-<body class="antialiased selection:bg-sky-500/20">
-
-    <!-- Nền chuyển động Liquid Mesh phía sau -->
-    <div class="ambient-canvas" aria-hidden="true">
-        <div class="liquid-blob blob-1"></div>
-        <div class="liquid-blob blob-2"></div>
-        <div class="liquid-blob blob-3"></div>
-        <div class="liquid-blob blob-4"></div>
-    </div>
-
-    <!-- Thông báo nổi (Glass Toast) khi sao chép Zalo / Email -->
-    <div id="glass-toast"
-         role="status"
-         aria-live="polite"
-         class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300 ease-out">
-        <div class="liquid-card px-4 py-2.5 rounded-full flex items-center gap-2.5 shadow-xl">
-            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center">
-                <i data-lucide="check" class="w-3.5 h-3.5 stroke-[2.5]"></i>
-            </span>
-            <span id="toast-message" class="text-sm font-medium tracking-tight">Đã sao chép!</span>
-        </div>
-    </div>
-
-    <!-- Khung nội dung chính (Tối ưu chuẩn Link-in-Bio trên cả Mobile & Desktop) -->
-    <main class="max-w-xl mx-auto px-4 pt-5 pb-16 sm:pt-8 sm:pb-20">
-
-        <!-- ======================================================================
-             THANH ĐIỀU KHIỂN NỔI: CHUYỂN GIAO DIỆN (LIQUID GLASS / SÁNG-TỐI) & VI/EN
-             ====================================================================== -->
-        <header class="reveal-item flex flex-wrap items-center justify-between gap-2 mb-6" style="animation-delay: 0.05s;">
-            <!-- Bộ chọn nhiều phong cách giao diện cho khách truy cập -->
-            <div class="liquid-pill p-1 rounded-full flex items-center gap-1 overflow-x-auto max-w-full" role="group" aria-label="Chọn phong cách giao diện">
-                <button onclick="setTheme('liquid-light')"
-                        data-theme-btn="liquid-light"
-                        class="theme-btn px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all">
-                    <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-400 ring-1 ring-black/10"></span>
-                    <span data-i18n="theme_glass">Liquid</span>
-                </button>
-                <button onclick="setTheme('liquid-dark')"
-                        data-theme-btn="liquid-dark"
-                        class="theme-btn px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all">
-                    <span class="w-2.5 h-2.5 rounded-full bg-slate-900 ring-1 ring-white/30"></span>
-                    <span data-i18n="theme_dark">Tối</span>
-                </button>
-                <button onclick="setTheme('sunset-aura')"
-                        data-theme-btn="sunset-aura"
-                        class="theme-btn px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all">
-                    <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-orange-400 to-rose-500"></span>
-                    <span data-i18n="theme_sunset">Hoàng hôn</span>
-                </button>
-                <button onclick="setTheme('minimal-paper')"
-                        data-theme-btn="minimal-paper"
-                        class="theme-btn px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 transition-all">
-                    <span class="w-2.5 h-2.5 rounded-full bg-zinc-200 ring-1 ring-zinc-400"></span>
-                    <span data-i18n="theme_minimal">Tối giản</span>
-                </button>
-            </div>
-
-            <!-- Cụm nút gạt nhanh Sáng/Tối & Ngôn ngữ VI/EN -->
-            <div class="flex items-center gap-2 ml-auto sm:ml-0">
-                <button onclick="toggleLightDark()"
-                        class="liquid-pill w-9 h-9 rounded-full flex items-center justify-center"
-                        title="Chuyển nhanh Sáng / Tối"
-                        aria-label="Chuyển nhanh Sáng / Tối">
-                    <i id="theme-mode-icon" data-lucide="moon" class="w-4 h-4"></i>
-                </button>
-
-                <button onclick="toggleLanguage()"
-                        class="liquid-pill px-3.5 h-9 rounded-full flex items-center gap-1.5 text-xs font-bold tracking-wide"
-                        title="Chuyển đổi ngôn ngữ Việt / Anh"
-                        aria-label="Chuyển đổi ngôn ngữ">
-                    <i data-lucide="globe" class="w-3.5 h-3.5 opacity-75"></i>
-                    <span id="lang-label">VI</span>
-                </button>
-            </div>
-        </header>
-
-        <!-- ======================================================================
-             PHẦN 1: GIỚI THIỆU MỞ ĐẦU (AVATAR + TÊN + SLOGAN)
-             ====================================================================== -->
-        <section class="reveal-item liquid-card rounded-[28px] p-6 sm:p-8 text-center mb-4" style="animation-delay: 0.12s;">
-            <!-- Khung Avatar phong cách kính mờ -->
-            <div class="relative w-24 h-24 sm:w-28 sm:h-28 mx-auto mb-4">
-                <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-sky-400 via-indigo-400 to-pink-400 opacity-60 blur-md"></div>
-                <div class="relative w-full h-full rounded-full p-1 bg-white/40 backdrop-blur-md border border-white/70 shadow-lg overflow-hidden">
-                    <img id="avatar-img"
-                         src="FB_IMG_1795743509337.jpg"
-                         alt="Hoàng Hải Nam"
-                         onerror="this.onerror=null; this.src='avatar.jpg'; this.onerror=function(){this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex';};"
-                         class="w-full h-full object-cover object-top rounded-full">
-                    <div id="avatar-fallback"
-                         style="display: none;"
-                         class="w-full h-full rounded-full bg-gradient-to-br from-sky-500 to-indigo-600 text-white font-display font-bold text-2xl sm:text-3xl items-center justify-center">
-                        HN
-                    </div>
-                </div>
-                <!-- Chấm trạng thái hoạt động -->
-                <span class="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-500 ring-2 ring-white shadow-sm" title="Đang hoạt động"></span>
-            </div>
-
-            <!-- Huy hiệu đơn vị học tập -->
-            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold mb-3"
-                 style="background: var(--badge-bg); color: var(--badge-text);">
-                <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
-                <span data-i18n="role_badge">Sinh viên Kỹ thuật Cơ khí • TNUT</span>
-            </div>
-
-            <!-- Họ và tên -->
-            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
-                Hoàng Hải Nam
-            </h1>
-
-            <!-- Slogan ngắn gọn -->
-            <p class="text-sm sm:text-base max-w-md mx-auto leading-relaxed"
-               style="color: var(--text-secondary);"
-               data-i18n="hero_slogan">
-                Sinh viên Kỹ thuật Cơ khí đam mê công nghệ, tư duy chính xác và xây dựng các sản phẩm web hữu ích cho học tập.
-            </p>
-        </section>
-
-        <!-- ======================================================================
-             PHẦN 2: LIÊN KẾT MẠNG XÃ HỘI & LIÊN HỆ NHANH (LINK-IN-BIO)
-             ====================================================================== -->
-        <section class="reveal-item space-y-3 mb-4" style="animation-delay: 0.2s;" aria-label="Liên kết mạng xã hội và liên hệ">
-            <!-- Nút Facebook -->
-            <a href="https://www.facebook.com/profile.php?id=61594208319108"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="liquid-card liquid-card-interactive rounded-2xl p-4 flex items-center justify-between group">
-                <div class="flex items-center gap-3.5">
-                    <div class="w-11 h-11 rounded-2xl bg-[#1877F2]/15 text-[#1877F2] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
-                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.5        }
 
         /* Hiệu ứng ánh sáng lướt qua thẻ dự án nổi bật */
         .specular-sheen {
@@ -956,18 +789,32 @@
             });
         }
 
-        // 5. Hàm sao chép nhanh Zalo / Email
+        // 5. Hàm sao chép nhanh Zalo / Email (Hỗ trợ Clipboard API mới + fallback)
         function copyText(text, type) {
+            const msgKey = type === 'zalo' ? 'toast_zalo' : 'toast_email';
+            const successMsg = translations[currentLang][msgKey] || text;
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text)
+                    .then(() => showToast(successMsg))
+                    .catch(() => fallbackCopyText(text, successMsg));
+            } else {
+                fallbackCopyText(text, successMsg);
+            }
+        }
+
+        function fallbackCopyText(text, successMsg) {
             const tempInput = document.createElement('input');
             tempInput.value = text;
+            tempInput.style.position = 'fixed';
+            tempInput.style.opacity = '0';
             document.body.appendChild(tempInput);
             tempInput.select();
             tempInput.setSelectionRange(0, 99999);
 
             try {
                 document.execCommand('copy');
-                const msgKey = type === 'zalo' ? 'toast_zalo' : 'toast_email';
-                showToast(translations[currentLang][msgKey]);
+                showToast(successMsg);
             } catch (err) {
                 showToast(text);
             } finally {
