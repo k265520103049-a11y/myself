@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="liquid-light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoàng Hải Nam | Bio & Portfolio</title>
+    <!-- Tải Tailwind CSS qua CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tải Font Inter & Plus Jakarta Sans từ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Tải Lucide Icons để hiển thị icon sắc nét -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ==========================================================================
+           1. HỆ THỐNG BIẾN MÀU & CHỦ ĐỀ (APPLE LIQUID GLASS & MULTI-THEME)
+           ========================================================================== */
+        :root {
+            /* Mặc định: Apple Liquid Glass Light */
+            --bg-base: #eef2f9;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            
+            /* Hiệu ứng kính lỏng (Liquid Glass) */
+            --glass-bg: rgba(255, 255, 255, 0.52);
+            --glass-bg-hover: rgba(255, 255, 255, 0.68);
+            --glass-border: rgba(255, 255, 255, 0.72);
+            --glass-border-bottom: rgba(255, 255, 255, 0.3);
+            --glass-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.9), inset 0 -1px 1px rgba(255, 255, 255, 0.25);
+            --glass-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 4px 16px -4px rgba(15, 23, 42, 0.04);
+            
+            /* Màu nhấn & Quả cầu ánh sáng nền (Ambient Mesh Blobs) */
+            --accent-primary: #007AFF;
+            --accent-secondary: #5856D6;
+            --badge-bg: rgba(0, 122, 255, 0.12);
+            --badge-text: #0066CC;
+            
+            --blob-1: rgba(56, 189, 248, 0.55);
+            --blob-2: rgba(168, 85, 247, 0.45);
+            --blob-3: rgba(244, 114, 182, 0.42);
+            --blob-4: rgba(52, 211, 153, 0.38);
+        }
+
+        /* Chủ đề 2: Apple Liquid Glass Dark (Kính tối visionOS) */
+        [data-theme="liquid-dark"] {
+            --bg-base: #070b14;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+            
+            --glass-bg: rgba(22, 28, 45, 0.52);
+            --glass-bg-hover: rgba(30, 38, 60, 0.68);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --glass-border-bottom: rgba(255, 255, 255, 0.06);
+            --glass-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.28), inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+            --glass-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65), 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+            
+            --accent-primary: #38bdf8;
+            --accent-secondary: #818cf8;
+            --badge-bg: rgba(56, 189, 248, 0.16);
+            --badge-text: #7dd3fc;
+            
+            --blob-1: rgba(14, 165, 233, 0.35);
+            --blob-2: rgba(139, 92, 246, 0.32);
+            --blob-3: rgba(236, 72, 153, 0.25);
+            --blob-4: rgba(16, 185, 129, 0.22);
+        }
+
+        /* Chủ đề 3: Sunset Aura (Hoàng hôn ấm áp) */
+        [data-theme="sunset-aura"] {
+            --bg-base: #fdf4f0;
+            --text-primary: #271713;
+            --text-secondary: #5c3d35;
+            --text-muted: #8a645a;
+            
+            --glass-bg: rgba(255, 248, 244, 0.58);
+            --glass-bg-hover: rgba(255, 250, 248, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.8);
+            --glass-border-bottom: rgba(251, 146, 60, 0.25);
+            --glass-highlight: inset 0 1px 1px rgba(255, 255, 255, 0.95);
+            --glass-shadow: 0 20px 40px -15px rgba(154, 52, 18, 0.1);
+            
+            --accent-primary: #ea580c;
+            --accent-secondary: #e11d48;
+            --badge-bg: rgba(234, 88, 12, 0.12);
+            --badge-text: #c2410c;
+            
+            --blob-1: rgba(251, 146, 60, 0.5);
+            --blob-2: rgba(244, 63, 94, 0.4);
+            --blob-3: rgba(250, 204, 21, 0.45);
+            --blob-4: rgba(217, 70, 239, 0.25);
+        }
+
+        /* Chủ đề 4: Minimalist Paper (Tối giản tinh khiết) */
+        [data-theme="minimal-paper"] {
+            --bg-base: #f4f4f5;
+            --text-primary: #18181b;
+            --text-secondary: #3f3f46;
+            --text-muted: #71717a;
+            
+            --glass-bg: rgba(255, 255, 255, 0.82);
+            --glass-bg-hover: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(228, 228, 231, 0.9);
+            --glass-border-bottom: rgba(212, 212, 216, 0.8);
+            --glass-highlight: inset 0 1px 0 rgba(255, 255, 255, 1);
+            --glass-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+            
+            --accent-primary: #18181b;
+            --accent-secondary: #52525b;
+            --badge-bg: rgba(24, 24, 27, 0.08);
+            --badge-text: #27272a;
+            
+            --blob-1: rgba(212, 212, 216, 0.45);
+            --blob-2: rgba(228, 228, 231, 0.5);
+            --blob-3: rgba(161, 161, 170, 0.25);
+            --blob-4: rgba(244, 244, 245, 0.6);
+        }
+
+        /* ==========================================================================
+           2. CẤU TRÚC NỀN & HIỆU ỨNG KÍNH LỎNG (LIQUID GLASS ENGINE)
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            transition: background-color 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.4s ease;
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+        }
+
+        /* Nền chuyển động đa sắc phía sau lớp kính */
+        .ambient-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .liquid-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(85px);
+            opacity: 0.9;
+            transition: background 0.7s ease;
+            animation: floatLiquid 18s infinite alternate cubic-bezier(0.45, 0.05, 0.55, 0.95);
+        }
+
+        .blob-1 {
+            width: 420px;
+            height: 420px;
+            top: -8%;
+            left: -6%;
+            background: var(--blob-1);
+            animation-duration: 16s;
+        }
+
+        .blob-2 {
+            width: 460px;
+            height: 460px;
+            top: 25%;
+            right: -10%;
+            background: var(--blob-2);
+            animation-duration: 21s;
+            animation-delay: -4s;
+        }
+
+        .blob-3 {
+            width: 380px;
+            height: 380px;
+            bottom: -5%;
+            left: 15%;
+            background: var(--blob-3);
+            animation-duration: 19s;
+            animation-delay: -8s;
+        }
+
+        .blob-4 {
+            width: 300px;
+            height: 300px;
+            top: 50%;
+            left: 42%;
+            background: var(--blob-4);
+            animation-duration: 24s;
+            animation-delay: -2s;
+        }
+
+        @keyframes floatLiquid {
+            0% {
+                transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            50% {
+                transform: translate(35px, -25px) scale(1.08) rotate(12deg);
+            }
+            100% {
+                transform: translate(-25px, 30px) scale(0.95) rotate(-8deg);
+            }
+        }
+
+        /* Thẻ kính Liquid Glass cốt lõi */
+        .liquid-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(26px) saturate(185%);
+            -webkit-backdrop-filter: blur(26px) saturate(185%);
+            border-top: 1px solid var(--glass-border);
+            border-left: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border-bottom);
+            border-bottom: 1px solid var(--glass-border-bottom);
+            box-shadow: var(--glass-shadow), var(--glass-highlight);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        background-color 0.35s ease,
+                        box-shadow 0.35s ease,
+                        border-color 0.35s ease;
+        }
+
+        .liquid-card-interactive:hover {
+            background: var(--glass-bg-hover);
+            transform: translateY(-2px);
+        }
+
+        .liquid-card-interactive:active {
+            transform: scale(0.985);
+        }
+
+        /* Nút bấm dạng viên thuốc (Apple Pill) */
+        .liquid-pill {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04), var(--glass-highlight);
+            transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .liquid-pill:hover {
+            background: var(--glass-bg-hover);
+            transform: translateY(-1px);
+        }
+
+        .liquid-pill:active {
+            transform: scale(0.96);
+        }
+
+        /* Hiệu ứng xuất hiện mượt mà khi tải trang */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(18px);
+            animation: revealUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes revealUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hiệu ứng ánh sáng lướt qua thẻ dự án nổi bật */
+        .specular-sheen {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specular-sheen::after {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -75%;
+            width: 50%;
+            height: 200%;
+            background: linear-gradient(
+                to right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.25) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(25deg);
+            transition: left 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+        }
+
+        .specular-sheen:hover::after {
+            left: 135%;
+        }
+
+        /* Tùy chỉnh thanh cuộn */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(148, 163, 184, 0.35);
+            border-radius: 999px;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-sky-500/20">
+
+    <!-- Nền chuyển động Liquid Mesh phía sau -->
+    <div class="ambient-canvas" aria-hidden="true">
+        <div class="liquid-blob blob-1"></div>
+        <div class="liquid-blob blob-2"></div>
+        <div class="liquid-blob blob-3"></div>
+        <div class="liquid-blob blob-4"></div>
+    </div>
+
+    <!-- Thông báo nổi (Glass Toast) khi sao chép Zalo / Email -->
+    <div id="glass-toast"
+         role="status"
+         aria-live="polite"
+         class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300 ease-out">
+        <div class="liquid-card px-4 py-2.5 rounded-full flex items-center gap-2.5 shadow-xl">
+            <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center">
+                <i data-lucide="check" class="w-3.5 h-3.5 stroke-[2.5]"></i>
+            </span>
+            <span id="toast-message" class="text-sm font-medium tracking-tight">Đã sao chép!</span>
+        </div>
+    </div>
+
+    <!-- Khung nội dung chính (Tối ưu chuẩn Link-in-Bio trên cả Mobile & Desktop) -->
+    <main class="max-w-xl mx-auto px-4 pt-5 pb-16 sm:pt-8 sm:pb-20">
+
+        <!-- ======================================================================
+             THANH ĐIỀU KHIỂN NỔI PHÍA TRÊN: ĐA GIAO DIỆN + SÁNG/TỐI + NGÔN NGỮ
+             ====================================================================== -->
+        <header class="reveal-item flex flex-wrap items-center justify-between gap-2 mb-6" style="animation-delay: 0.05s;">
+            <!-- Bộ chọn 4 phong cách giao diện (Theme Presets) -->
+            <div class="liquid-pill p-1 rounded-full flex items-center gap-1" role="group" aria-label="Chọn phong cách giao diện">
+                <button onclick="setTheme('liquid-light')" data-theme-btn="liquid-light"
+                        class="theme-btn px-2.5 py-1 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all"
+                        title="Liquid Glass Sáng">
+                    <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-sky-400 to-indigo-400 ring-1 ring-black/10"></span>
+                    <span class="hidden sm:inline" data-i18n="theme_glass">Liquid</span>
+                </button>
+
+                <button onclick="setTheme('liquid-dark')" data-theme-btn="liquid-dark"
+                        class="theme-btn px-2.5 py-1 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all"
+                        title="Liquid Glass Tối">
+                    <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-slate-900 to-sky-500 ring-1 ring-white/20"></span>
+                    <span class="hidden sm:inline" data-i18n="theme_dark">Dark</span>
+                </button>
+
+                <button onclick="setTheme('sunset-aura')" data-theme-btn="sunset-aura"
+                        class="theme-btn px-2.5 py-1 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all"
+                        title="Hoàng Hôn Ấm Áp">
+                    <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-tr from-orange-500 to-rose-500 ring-1 ring-black/10"></span>
+                    <span class="hidden sm:inline" data-i18n="theme_sunset">Sunset</span>
+                </button>
+
+                <button onclick="setTheme('minimal-paper')" data-theme-btn="minimal-paper"
+                        class="theme-btn px-2.5 py-1 rounded-full text-xs font-medium flex items-center gap-1.5 transition-all"
+                        title="Tối Giản">
+                    <span class="w-2.5 h-2.5 rounded-full bg-zinc-300 ring-1 ring-black/20"></span>
+                    <span class="hidden sm:inline" data-i18n="theme_minimal">Minimal</span>
+                </button>
+            </div>
+
+            <!-- Cụm nút chuyển nhanh Sáng/Tối & Song ngữ VI/EN -->
+            <div class="flex items-center gap-2">
+                <!-- Nút gạt nhanh Sáng / Tối -->
+                <button onclick="toggleLightDark()"
+                        class="liquid-pill p-2 rounded-full flex items-center justify-center"
+                        aria-label="Chuyển đổi Sáng / Tối"
+                        title="Sáng / Tối">
+                    <i id="theme-mode-icon" data-lucide="moon" class="w-4 h-4"></i>
+                </button>
+
+                <!-- Nút chuyển đổi ngôn ngữ VI / EN -->
+                <button onclick="toggleLanguage()"
+                        class="liquid-pill px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide flex items-center gap-1.5"
+                        aria-label="Chuyển đổi ngôn ngữ Việt / Anh">
+                    <i data-lucide="globe" class="w-3.5 h-3.5 opacity-75"></i>
+                    <span id="lang-label">VI</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- ======================================================================
+             PHẦN 1: GIỚI THIỆU MỞ ĐẦU (HERO - AVATAR, TÊN, TRƯỜNG, SLOGAN)
+             ====================================================================== -->
+        <section class="reveal-item liquid-card rounded-[28px] p-6 sm:p-8 text-center mb-4" style="animation-delay: 0.12s;">
+            <!-- Khung Avatar có viền kính phát sáng -->
+            <div class="relative inline-block mb-4 group">
+                <div class="absolute -inset-1.5 rounded-full bg-gradient-to-tr from-sky-400 via-indigo-400 to-pink-400 opacity-60 blur-md group-hover:opacity-85 transition duration-500"></div>
+                <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full p-1 bg-white/40 backdrop-blur-md border border-white/60 shadow-lg overflow-hidden mx-auto">
+                    <!-- Hiển thị trực tiếp ảnh đại diện bạn đã gửi -->
+                    <img id="avatar-img"
+                         src="FB_IMG_1795743509337.jpg"
+                         alt="Hoàng Hải Nam"
+                         onerror="this.onerror=null; this.src='avatar.jpg'; this.onerror=function(){this.style.display='none'; document.getElementById('avatar-fallback').style.display='flex';};"
+                         class="w-full h-full object-cover object-top rounded-full">
+                    <div id="avatar-fallback"
+                         style="display: none;"
+                         class="w-full h-full rounded-full bg-gradient-to-br from-sky-500 to-indigo-600 text-white font-display font-bold text-2xl sm:text-3xl items-center justify-center">
+                        HN
+                    </div>
+                </div>
+                <!-- Chấm trạng thái hoạt động -->
+                <span class="absolute bottom-1 right-1 w-4 h-4 rounded-full bg-emerald-400 ring-2 ring-white shadow-sm" title="Đang hoạt động"></span>
+            </div>
+
+            <!-- Tên & Huy hiệu sinh viên Kỹ thuật Cơ khí - TNUT -->
+            <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+                Hoàng Hải Nam
+            </h1>
+
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-xs sm:text-sm font-medium mb-3"
+                 style="background: var(--badge-bg); color: var(--badge-text);">
+                <i data-lucide="cog" class="w-4 h-4 shrink-0"></i>
+                <span data-i18n="role_badge">Kỹ thuật Cơ khí • TNUT</span>
+            </div>
+
+            <!-- Slogan ngắn gọn, truyền cảm hứng -->
+            <p class="text-sm sm:text-base leading-relaxed max-w-md mx-auto"
+               style="color: var(--text-secondary);"
+               data-i18n="hero_slogan">
+                Sinh viên Kỹ thuật Cơ khí đam mê công nghệ, tư duy chính xác và xây dựng các sản phẩm web hữu ích cho học tập.
+            </p>
+        </section>
+
+        <!-- ======================================================================
+             PHẦN 2: LIÊN HỆ & MẠNG XÃ HỘI (LINK-IN-BIO + SAO CHÉP NHANH)
+             ====================================================================== -->
+        <section class="reveal-item space-y-3 mb-4" style="animation-delay: 0.2s;" aria-label="Liên kết mạng xã hội và liên hệ">
+            <!-- Nút 1: Facebook cá nhân -->
+            <a href="https://www.facebook.com/profile.php?id=61594208319108"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="liquid-card liquid-card-interactive rounded-[22px] p-4 flex items-center justify-between group block">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-2xl bg-[#1877F2]/15 text-[#1877F2] flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                        <!-- Icon Facebook SVG sắc nét -->
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <div class="font-semibold text-sm sm:text-base flex items-center gap-1.5">
+                            <span>Facebook</span>
+                            <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-500" data-i18n="fb_tag">Kết nối</span>
+                        </div>
+                        <p class="text-xs sm:text-sm" style="color: var(--text-muted);" data-i18n="fb_desc">
+                            Theo dõi & nhắn tin trực tiếp qua trang cá nhân
+                        </p>
+                    </div>
+                </div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </div>
+            </a>
+
+            <!-- Nút 2: Zalo (Mở Zalo + Nút sao chép nhanh số điện thoại 0366012580) -->
+            <div class="liquid-card liquid-card-interactive rounded-[22px] p-4 flex items-center justify-between gap-2">
+                <a href="https://zalo.me/0366012580"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="flex items-center gap-3.5 flex-1 min-w-0 group">
+                    <div class="w-11 h-11 rounded-2xl bg-sky-500/15 text-sky-500 flex items-center justify-center shrink-0 font-display font-extrabold text-sm group-hover:scale-105 transition-transform">
+                        Zalo
+                    </div>
+                    <div class="text-left truncate">
+                        <div class="font-semibold text-sm sm:text-base flex items-center gap-1.5">
+                            <span>Zalo</span>
+                            <span class="text-xs font-mono opacity-80">0366 012 580</span>
+                        </div>
+                        <p class="text-xs sm:text-sm truncate" style="color: var(--text-muted);" data-i18n="zalo_desc">
+                            Nhấn để mở Zalo hoặc bấm nút bên cạnh để sao chép SĐT
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Nút sao chép nhanh số Zalo -->
+                <button onclick="copyText('0366012580', 'zalo')"
+                        class="liquid-pill px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-1.5 shrink-0 hover:text-sky-500"
+                        aria-label="Sao chép số Zalo">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="copy_btn">Sao chép</span>
+                </button>
+            </div>
+
+            <!-- Nút 3: Email liên hệ (Đã cập nhật email sinh viên TNUT) -->
+            <div class="liquid-card liquid-card-interactive rounded-[22px] p-4 flex items-center justify-between gap-2">
+                <a href="mailto:k265520103049@tnut.edu.vn"
+                   class="flex items-center gap-3.5 flex-1 min-w-0 group">
+                    <div class="w-11 h-11 rounded-2xl bg-indigo-500/15 text-indigo-500 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-left truncate">
+                        <div class="font-semibold text-sm sm:text-base">Email</div>
+                        <p id="email-display" class="text-xs sm:text-sm truncate" style="color: var(--text-muted);">
+                            k265520103049@tnut.edu.vn
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Nút sao chép nhanh Email -->
+                <button onclick="copyText('k265520103049@tnut.edu.vn', 'email')"
+                        class="liquid-pill px-3 py-2 rounded-xl text-xs font-medium flex items-center gap-1.5 shrink-0 hover:text-indigo-500"
+                        aria-label="Sao chép địa chỉ Email">
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    <span data-i18n="copy_btn">Sao chép</span>
+                </button>
+            </div>
+
+            <!-- Nút 4: GitHub cá nhân -->
+            <a href="https://github.com/k265520103049-a11y"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="liquid-card liquid-card-interactive rounded-[22px] p-4 flex items-center justify-between group block">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-2xl bg-slate-500/15 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="text-left">
+                        <div class="font-semibold text-sm sm:text-base flex items-center gap-1.5">
+                            <span>GitHub</span>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-slate-500/10" style="color: var(--text-secondary);">@k265520103049-a11y</span>
+                        </div>
+                        <p class="text-xs sm:text-sm" style="color: var(--text-muted);" data-i18n="gh_desc">
+                            Khám phá mã nguồn & các dự án web đang phát triển
+                        </p>
+                    </div>
+                </div>
+                <div class="w-8 h-8 rounded-full flex items-center justify-center opacity-60 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </div>
+            </a>
+        </section>
+
+        <!-- ======================================================================
+             PHẦN 3: TIỂU SỬ & HỌC VẤN (ABOUT / EDUCATION)
+             ====================================================================== -->
+        <section class="reveal-item liquid-card rounded-[26px] p-6 mb-4" style="animation-delay: 0.28s;">
+            <div class="flex items-center gap-2.5 mb-3">
+                <div class="w-8 h-8 rounded-xl flex items-center justify-center"
+                     style="background: var(--badge-bg); color: var(--badge-text);">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                </div>
+                <h2 class="text-base sm:text-lg font-bold tracking-tight" data-i18n="about_title">
+                    Giới thiệu & Học vấn
+                </h2>
+            </div>
+
+            <p class="text-sm sm:text-[15px] leading-relaxed mb-4"
+               style="color: var(--text-secondary);"
+               data-i18n="about_text">
+                Xin chào! Mình là Hoàng Hải Nam, sinh viên chuyên ngành Kỹ thuật Cơ khí tại Trường Đại học Kỹ thuật Công nghiệp - Đại học Thái Nguyên (TNUT). Mình yêu thích việc kết hợp tư duy kỹ thuật cơ khí chính xác với công nghệ web hiện đại để tạo ra các công cụ hỗ trợ học tập trực quan cho sinh viên.
+            </p>
+
+            <!-- Mốc học vấn gọn gàng -->
+            <div class="rounded-2xl p-3.5 border border-white/20 bg-white/10 flex items-start gap-3">
+                <div class="w-9 h-9 rounded-xl bg-sky-500/15 text-sky-500 flex items-center justify-center shrink-0 mt-0.5">
+                    <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+                </div>
+                <div>
+                    <div class="text-sm font-semibold" data-i18n="edu_school">
+                        Đại học Kỹ thuật Công nghiệp (TNUT)
+                    </div>
+                    <div class="text-xs mt-0.5" style="color: var(--text-muted);" data-i18n="edu_detail">
+                        Ngành Kỹ thuật Cơ khí • Đại học Thái Nguyên
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================================
+             PHẦN 4: DỰ ÁN NỔI BẬT (FEATURED PROJECT - WEBSITE ÔN TẬP TRIẾT HỌC)
+             ====================================================================== -->
+        <section class="reveal-item liquid-card specular-sheen rounded-[26px] p-6 mb-6" style="animation-delay: 0.36s;">
+            <div class="flex items-center justify-between gap-2 mb-3.5">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 rounded-xl flex items-center justify-center"
+                         style="background: var(--badge-bg); color: var(--badge-text);">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                    </div>
+                    <h2 class="text-base sm:text-lg font-bold tracking-tight" data-i18n="project_section_title">
+                        Dự án nổi bật
+                    </h2>
+                </div>
+                <span class="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-500"
+                      data-i18n="project_status">
+                    Đang hoạt động
+                </span>
+            </div>
+
+            <!-- Thẻ chi tiết dự án Website Ôn Tập Môn Triết Học -->
+            <div class="rounded-2xl p-4 sm:p-5 border border-white/25 bg-white/10">
+                <div class="flex items-start justify-between gap-3 mb-2.5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 text-white flex items-center justify-center shrink-0 shadow-md">
+                            <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-base sm:text-lg leading-snug" data-i18n="proj_title">
+                                Website Ôn Tập Môn Triết Học
+                            </h3>
+                            <p class="text-xs font-medium" style="color: var(--text-muted);" data-i18n="proj_subtitle">
+                                Nền tảng hệ thống hóa kiến thức & luyện trắc nghiệm
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-sm leading-relaxed mb-4"
+                   style="color: var(--text-secondary);"
+                   data-i18n="proj_desc">
+                    Ứng dụng web giúp sinh viên hệ thống hóa các chương trọng tâm của môn Triết học, luyện tập câu hỏi trắc nghiệm thông minh, ghi nhớ nhanh các khái niệm cốt lõi và tối ưu hiệu quả ôn thi.
+                </p>
+
+                <!-- Các thẻ công nghệ / đặc điểm -->
+                <div class="flex flex-wrap gap-1.5 mb-4">
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-white/20 border border-white/20">EdTech</span>
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-white/20 border border-white/20" data-i18n="tag_quiz">Trắc nghiệm thông minh</span>
+                    <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-white/20 border border-white/20">GitHub Pages</span>
+                </div>
+
+                <!-- Nút hành động dẫn thẳng tới Website Ôn Tập Môn Triết Học -->
+                <div class="flex flex-wrap items-center gap-2.5">
+                    <a href="https://k265520103049-a11y.github.io/triet-ml-by-draglok/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold text-white shadow-md transition-transform active:scale-95"
+                       style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));">
+                        <span data-i18n="proj_cta">Trải nghiệm dự án</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chân trang tối giản -->
+        <footer class="reveal-item text-center text-xs" style="animation-delay: 0.44s; color: var(--text-muted);">
+            <p>© <span id="current-year"></span> Hoàng Hải Nam • <span data-i18n="footer_note">Thiết kế với phong cách Liquid Glass</span></p>
+        </footer>
+
+    </main>
+
+    <!-- ==========================================================================
+         JAVASCRIPT: ĐIỀU KHIỂN ĐA GIAO DIỆN, SONG NGỮ VI/EN & SAO CHÉP NHANH
+         ========================================================================== -->
+    <script>
+        // 1. Từ điển nội dung song ngữ Việt - Anh
+        const translations = {
+            vi: {
+                theme_glass: "Liquid",
+                theme_dark: "Tối",
+                theme_sunset: "Hoàng hôn",
+                theme_minimal: "Tối giản",
+                role_badge: "Kỹ thuật Cơ khí • TNUT",
+                hero_slogan: "Sinh viên Kỹ thuật Cơ khí đam mê công nghệ, tư duy chính xác và xây dựng các sản phẩm web hữu ích cho học tập.",
+                fb_tag: "Kết nối",
+                fb_desc: "Theo dõi & nhắn tin trực tiếp qua trang cá nhân",
+                zalo_desc: "Nhấn để mở Zalo hoặc bấm nút bên cạnh để sao chép SĐT",
+                copy_btn: "Sao chép",
+                gh_desc: "Khám phá mã nguồn & các dự án web đang phát triển",
+                about_title: "Giới thiệu & Học vấn",
+                about_text: "Xin chào! Mình là Hoàng Hải Nam, sinh viên chuyên ngành Kỹ thuật Cơ khí tại Trường Đại học Kỹ thuật Công nghiệp - Đại học Thái Nguyên (TNUT). Mình yêu thích việc kết hợp tư duy kỹ thuật cơ khí chính xác với công nghệ web hiện đại để tạo ra các công cụ hỗ trợ học tập trực quan cho sinh viên.",
+                edu_school: "Đại học Kỹ thuật Công nghiệp (TNUT)",
+                edu_detail: "Ngành Kỹ thuật Cơ khí • Đại học Thái Nguyên",
+                project_section_title: "Dự án nổi bật",
+                project_status: "Đang hoạt động",
+                proj_title: "Website Ôn Tập Môn Triết Học",
+                proj_subtitle: "Nền tảng hệ thống hóa kiến thức & luyện trắc nghiệm",
+                proj_desc: "Ứng dụng web giúp sinh viên hệ thống hóa các chương trọng tâm của môn Triết học, luyện tập câu hỏi trắc nghiệm thông minh, ghi nhớ nhanh các khái niệm cốt lõi và tối ưu hiệu quả ôn thi.",
+                tag_quiz: "Trắc nghiệm thông minh",
+                proj_cta: "Trải nghiệm dự án",
+                footer_note: "Thiết kế với phong cách Liquid Glass",
+                toast_zalo: "Đã sao chép số Zalo: 0366012580",
+                toast_email: "Đã sao chép Email: k265520103049@tnut.edu.vn"
+            },
+            en: {
+                theme_glass: "Liquid",
+                theme_dark: "Dark",
+                theme_sunset: "Sunset",
+                theme_minimal: "Minimal",
+                role_badge: "Mechanical Engineering • TNUT",
+                hero_slogan: "Mechanical Engineering student passionate about technology, precision thinking, and building useful web tools for learning.",
+                fb_tag: "Connect",
+                fb_desc: "Follow & send a direct message via my personal profile",
+                zalo_desc: "Tap to open Zalo or click the button to copy phone number",
+                copy_btn: "Copy",
+                gh_desc: "Explore source code & ongoing web development projects",
+                about_title: "About & Education",
+                about_text: "Hi! I'm Hoang Hai Nam, a Mechanical Engineering student at Thai Nguyen University of Technology (TNUT). I enjoy combining precision engineering mindset with modern web technologies to build intuitive learning tools for students.",
+                edu_school: "Thai Nguyen University of Technology (TNUT)",
+                edu_detail: "Major in Mechanical Engineering • Thai Nguyen University",
+                project_section_title: "Featured Project",
+                project_status: "Live",
+                proj_title: "Philosophy Study & Quiz Website",
+                proj_subtitle: "Knowledge systematization & smart quiz platform",
+                proj_desc: "A web application helping students systematize key chapters of Philosophy, practice smart multiple-choice quizzes, memorize core concepts quickly, and optimize exam preparation.",
+                tag_quiz: "Smart Quizzes",
+                proj_cta: "Explore Project",
+                footer_note: "Crafted with Apple Liquid Glass aesthetic",
+                toast_zalo: "Copied Zalo number: 0366012580",
+                toast_email: "Copied Email: k265520103049@tnut.edu.vn"
+            }
+        };
+
+        let currentLang = 'vi';
+        let currentTheme = 'liquid-light';
+        let toastTimeout = null;
+
+        // 2. Hàm chuyển đổi chủ đề giao diện (Theme Switcher)
+        function setTheme(themeName) {
+            currentTheme = themeName;
+            document.documentElement.setAttribute('data-theme', themeName);
+            try {
+                localStorage.setItem('hn_portfolio_theme', themeName);
+            } catch (e) {}
+
+            // Cập nhật trạng thái nút đang được chọn
+            document.querySelectorAll('.theme-btn').forEach(btn => {
+                const isSelected = btn.getAttribute('data-theme-btn') === themeName;
+                if (isSelected) {
+                    btn.style.backgroundColor = 'var(--accent-primary)';
+                    btn.style.color = '#ffffff';
+                    btn.classList.add('shadow-sm');
+                } else {
+                    btn.style.backgroundColor = 'transparent';
+                    btn.style.color = 'var(--text-primary)';
+                    btn.classList.remove('shadow-sm');
+                }
+            });
+
+            // Cập nhật icon Sáng / Tối
+            const modeIcon = document.getElementById('theme-mode-icon');
+            if (modeIcon) {
+                modeIcon.setAttribute('data-lucide', themeName === 'liquid-dark' ? 'sun' : 'moon');
+                if (window.lucide) {
+                    lucide.createIcons();
+                }
+            }
+        }
+
+        // 3. Hàm gạt nhanh giữa Liquid Light và Liquid Dark
+        function toggleLightDark() {
+            const nextTheme = currentTheme === 'liquid-dark' ? 'liquid-light' : 'liquid-dark';
+            setTheme(nextTheme);
+        }
+
+        // 4. Hàm chuyển đổi ngôn ngữ Việt / Anh
+        function toggleLanguage() {
+            currentLang = currentLang === 'vi' ? 'en' : 'vi';
+            document.documentElement.lang = currentLang;
+            try {
+                localStorage.setItem('hn_portfolio_lang', currentLang);
+            } catch (e) {}
+
+            const langLabel = document.getElementById('lang-label');
+            if (langLabel) {
+                langLabel.textContent = currentLang.toUpperCase();
+            }
+
+            // Cập nhật toàn bộ text có thuộc tính data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+        }
+
+        // 5. Hàm sao chép nhanh Zalo / Email
+        function copyText(text, type) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999);
+
+            try {
+                document.execCommand('copy');
+                const msgKey = type === 'zalo' ? 'toast_zalo' : 'toast_email';
+                showToast(translations[currentLang][msgKey]);
+            } catch (err) {
+                showToast(text);
+            } finally {
+                document.body.removeChild(tempInput);
+            }
+        }
+
+        // 6. Hiển thị thanh thông báo Toast mượt mà
+        function showToast(message) {
+            const toast = document.getElementById('glass-toast');
+            const toastMsg = document.getElementById('toast-message');
+            if (!toast || !toastMsg) return;
+
+            toastMsg.textContent = message;
+            toast.classList.remove('opacity-0', 'translate-y-4');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-4');
+            }, 2600);
+        }
+
+        // 7. Khởi tạo trạng thái ban đầu khi tải trang
+        window.addEventListener('DOMContentLoaded', () => {
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // Khôi phục giao diện & ngôn ngữ đã lưu (nếu có)
+            try {
+                const savedTheme = localStorage.getItem('hn_portfolio_theme');
+                if (savedTheme) {
+                    setTheme(savedTheme);
+                } else {
+                    setTheme('liquid-light');
+                }
+
+                const savedLang = localStorage.getItem('hn_portfolio_lang');
+                if (savedLang && savedLang !== currentLang) {
+                    toggleLanguage();
+                }
+            } catch (e) {
+                setTheme('liquid-light');
+            }
+
+            if (window.lucide) {
+                lucide.createIcons();
+            }
+        });
+    </script>
+</body>
+</html>
